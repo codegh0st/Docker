@@ -1,0 +1,5 @@
+What is docker?
+---------------
+A containarization tool, which create a bundle of codes, configurations, dependencies, and library, we call this bundle 'image', this image is
+later deployed as container, then we call that that app is running in container. 
+

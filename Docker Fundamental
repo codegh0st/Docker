@@ -1,15 +1,25 @@
-What is docker?
----------------
-A containarization tool, which create a bundle of codes, configurations, dependencies, and library, we call this bundle 'image', this image is
-later deployed as container, then we call that that app is running in container. 
-
 what is build?
 ---------------
 in build step, we give name of registry, repository and the tag ot the docker daemon, and ask to create image. 
- repository is the url where the docker have to connect for any particular image.
-  repository is the folder where same app's image is stored in derrent versions.
-   tag is nothing but one alphanumeric unique identifier for that particular image. because when we pull any iamage we have to specify which
-   version of that app need to be pulled? that we do in tag.
+repository is the url where the docker have to connect for any particular image. 
+repository is the folder where same app's image is stored in derrent versions.
+tag is nothing but one alphanumeric unique identifier for that particular image. because when we pull any iamage we have to specify which
+version of that app need to be pulled? that we do in tag.
+
+Note: image is layer based architecture, if we do not specify rgistry url/reposioty then by default
+It docker will look for image to hub.docker.com, get the base image of the app which is already
+There on docker hub, these images are maintained by docker community.
+
+After fetching this base image we add our app and configure it , we write instruction in 'docker file' what exactly we need . Then we build our own costomized image, 
+Later we push this image to any registry (artifact hosting tool like nexus). In this case we are pushing our image to hub.docekr.com. 
+
+Later when we need to run this app in any environment like dev, stage, or prod, we just have to pull that image and run it. 
+It will creat one container with all required software and configuration, that app will be running. 
+
+[docker flow]
+[app-code + dockerfile] -> [build-image] -> [login and push this iamge-to-registry] 
+-> [pull this image to dev/stage/prod env] -> [run-that-iamge-as-container]
+
    
 
     

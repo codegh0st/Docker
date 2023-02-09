@@ -20,6 +20,11 @@ It will creat one container with all required software and configuration, that a
 [app-code + dockerfile] -> [build-image] -> [login and push this iamge-to-registry] 
 -> [pull this image to dev/stage/prod env] -> [run-that-iamge-as-container]
 
-   
+
+Docker only connect with those registry who has SSL/TCL configured. so by default nexus server has no SSL/TCL, in orde to work with docker with
+nexus, fist configure SSL TCL. encryption in transit. https protocol.
+
+however its not recommended but we can configure docker daemon to work with insecure connection also by configuring /var/lib/docker/docker.json file.
+
 
     

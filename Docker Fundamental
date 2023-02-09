@@ -5,10 +5,11 @@ later deployed as container, then we call that that app is running in container.
 
 what is build?
 ---------------
-in build step, we give name of registry, repository and the tag ot the docker daemon,
+in build step, we give name of registry, repository and the tag ot the docker daemon, and ask to create image. 
  repository is the url where the docker have to connect for any particular image.
   repository is the folder where same app's image is stored in derrent versions.
    tag is nothing but one alphanumeric unique identifier for that particular image. because when we pull any iamage we have to specify which
    version of that app need to be pulled? that we do in tag.
    
+
     

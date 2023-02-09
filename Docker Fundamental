@@ -24,7 +24,57 @@ It will creat one container with all required software and configuration, that a
 Docker only connect with those registry who has SSL/TCL configured. so by default nexus server has no SSL/TCL, in orde to work with docker with
 nexus, fist configure SSL TCL. encryption in transit. https protocol.
 
-however its not recommended but we can configure docker daemon to work with insecure connection also by configuring /var/lib/docker/docker.json file.
+however its not recommended but we can configure docker daemon to work with insecure connection also by configuring /var/lib/docker/daemon.json file.
+
+/etc/docker/daemon.json
+sud vi /etc/docker/daemon.json --> create this file, make this entry in this file for insecure acces. this is nexus ip:port
+{
+"insecure-registries":["43.205.110.218:8081"]
+}
+
+
+********************
+
+tomcat
+docker run -d --name <containerName> -p <hostPort:contianerPort> <Image>
+image -> <registryURLOrEndPoint/repositroy:tag>
+
+docker run -d --name nginxcontianer -p 80:80 nqinx:<tag>
+
+docker run -d --name tomcatcontianer -p 8080:8080 tomcat  --> if tag is not provide bydefault take 'latest' tag
+
+Dockerfile
+FROM tomcat:8.5.85-jdk17-temurin-focal
+COPY target/maven-web-application.war/usr/local/tomcat/webapps/maven-web-application.war
+
+docker build -t 471466100791.dkr.ecr.ap-south-1.amazonaws.com/java-web-app:1
+
+
+docker loin -u <username> -p <password> <registryurl>
+
+docker login -u aws-user -p aws-password 471466100791.dkr.ecr.ap-south-1.amazonaws.com
+docker push 471466100791.dkr.ecr.ap-south-1.amazonaws.com/java-web-app:1
+471466100791.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:1
+
+docker loqin -u AWS -p passw0rd  471466100791.dkr.ecr.ap-south-1.amazonaws.com
+docker run -d --name mavenwebapp -p 8080:8080 471466100791.dkr.ecr.ap-south-1.amazonaws.com/maven-web-application:1
+
+
+Nexus
+jFrog
+ECR
+docker build - 43.205.110.218:8081/repository/maven-web-app:1
+docker push 43.205.110.218:8081/repository/maven-web-app:1
+/etc/docker/daemon.json
+sud vi /etc/docker/daemon.json --> make this entry in this file for insecure acces. this is nexus ip:port
+{
+"insecure-registries":["43.205.110.218:8081"]
+}
+
+then restart the docker daemon. -> sudo systemctl restart docker
+
+*********************
+
 
 
     

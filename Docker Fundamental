@@ -32,7 +32,42 @@ sud vi /etc/docker/daemon.json --> create this file, make this entry in this fil
 "insecure-registries":["43.205.110.218:8081"]
 }
 
+***************
+virtual box is doing the same thing s docker is doing. but why we moved to docker instead of virtual machines?
 
+isiliye kyon ki virtual machine haeavy hote hai means , virtual machine approache me ek host os hota again on host os , there is a gues os, then on guest
+os different kind of dependency install karne padate hai. 
+
+dusra ki, sabhi virutal machines on given host machine shares the same name space of the kernel. eg. volume, network, process, user space etc. so agar
+kis vm ke wajah se host machine ka kernel space me gadbad hua to sabhi vm down ho jayege. whereas docker container ka alaga-alag name space hota hai 
+isiliye agar kisi container ka namespace kharab hota hai to woh dusre container ko effect nahi karega. Coantianer me complete os nahi hota hai. 
+isme just os ka library hota jo host ke kernel se baat kar sake , isiliye light weight hoga hai. 
+
+****************
+vm me ham computer ke resources ka pura upyoug nahi kr pate hai. kuch resoruce unused reh jane par bhi ham uspe kisi dusra app ko run nahi kr sakte kyonki
+fir isolation ka koi matlab nhi nahi reh jayega. ek vm me ek app hi run hona chahiye. 
+supoose we have 1 host computer with 20 gb ram and 100gb hdd. ispe hamne 4 vm reate kr diye. 5gb ram aur 25gb hdd ka. 
+abb suppose karo vm-1 me ek app ran kiya jo sirf 2gab ram aur 15ghb hdd hi le raha hai. isliye another 2gb ram aur 10gb hdd waste ho raha hina. 
+
+is waste hue resource pe ahm kisi dusra app app ko nahi run kar sakte, kyon ki fir isolation nahi rahega. versions, dependencies, configurations diffecutly 
+dega. 
+
+whsere as container me yadi ran karte to, woh conatiner sir 2gb ram and 10gb hdd ke sath hi create hota. no wastage of resources.
+
+lekin coantine ke case me ais nahi hai. container ustan hi resourec 
+leta hai jitana ki woh paritcula app run hone ke liye chahiye. 
+
+*********************
+
+
+[Advancement of deployement and resource utiliztions]
+    * Physical Machine -> Virtual Machine -> Containerization (Docker)
+
+
+
+
+
+*************
 ********************
 
 tomcat
